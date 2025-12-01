@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N创设计导航网 - 设计资源聚合平台</title>
+  <!-- 引入Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入Font Awesome图标 -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#36CFFB',
+            accent: '#FF7D00',
+            dark: '#1D2129',
+            light: '#F2F3F5'
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .card-hover {
+        @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+      }
+      .nav-active {
+        @apply bg-primary/10 text-primary border-l-4 border-primary;
+      }
+    }
+  </style>
+</head>
+<body class="font-inter bg-light text-dark min-h-screen flex flex-col">
+  <!-- 顶部导航栏 -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo区域 -->
+      <div class="flex items-center space-x-2">
+        <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white">
+          <i class="fa fa-paint-brush text-xl"></i>
+        </div>
+        <h1 class="text-xl md:text-2xl font-bold text-primary">N创设计导航网</h1>
+      </div>
+      
+      <!-- 搜索框 -->
+      <div class="hidden md:flex items-center flex-1 max-w-md mx-8">
+        <div class="relative w-full">
+          <input 
+            type="text" 
+            placeholder="搜索设计资源/工具..." 
+            class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+          >
+          <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+        </div>
+      </div>
+      
+      <!-- 移动端菜单按钮 -->
+      <button id="menuToggle" class="md:hidden text-dark text-xl">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+    
+    <!-- 移动端搜索框 -->
+    <div class="md:hidden px-4 pb-3">
+      <div class="relative w-full">
+        <input 
+          type="text" 
+          placeholder="搜索设计资源/工具..." 
+          class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+        >
+        <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="flex-1 container mx-auto px-4 py-6 md:py-8">
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- 侧边分类导航 - 移动端可折叠 -->
+      <aside id="sidebar" class="md:w-64 w-full bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 md:h-[calc(100vh-120px)] md:sticky md:top-24">
+        <nav class="p-4">
+          <ul class="space-y-1">
+            <!-- 以图搜图 -->
+            <li>
+              <a href="#reverse-image" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-all">
+                <i class="fa fa-search-plus w-6 text-center text-primary"></i>
+                <span class="ml-3 font-medium">以图搜图</span>
+              </a>
+            </li>
+            <!-- 素材图库 -->
+            <li>
+              <a href="#material-library" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-all">
+                <i class="fa fa-image w-6 text-center text-secondary"></i>
+                <span class="ml-3 font-medium">素材图库</span>
+              </a>
+            </li>
+            <!-- 灵感创意 -->
+            <li>
+              <a href="#inspiration" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-all">
+                <i class="fa fa-lightbulb-o w-6 text-center text-accent"></i>
+                <span class="ml-3 font-medium">灵感创意</span>
+              </a>
+            </li>
+            <!-- 垂直设计 -->
+            <li>
+              <a href="#vertical-design" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-all">
+                <i class="fa fa-th-large w-6 text-center text-purple-500"></i>
+                <span class="ml-3 font-medium">垂直设计领域</span>
+              </a>
+            </li>
+            <!-- 设计工具 -->
+            <li>
+              <a href="#design-tools" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-all">
+                <i class="fa fa-wrench w-6 text-center text-green-500"></i>
+                <span class="ml-3 font-medium">设计工具</span>
+              </a>
+            </li>
+            <!-- 字体工具 -->
+            <li>
+              <a href="#font-tools" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-all">
+                <i class="fa fa-font w-6 text-center text-red-500"></i>
+                <span class="ml-3 font-medium">字体工具</span>
+              </a>
+            </li>
+            <!-- AI设计工具 -->
+            <li>
+              <a href="#ai-tools" class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-all">
+                <i class="fa fa-robot w-6 text-center text-blue-700"></i>
+                <span class="ml-3 font-medium">AI设计工具</span>
+              </a>
+            </li>
+          </ul>
+          
+          <!-- 快捷入口 -->
+          <div class="mt-8 pt-6 border-t border-gray-100">
+            <h3 class="px-4 text-sm font-medium text-gray-500 mb-3">快捷入口</h3>
+            <ul class="space-y-1">
+              <li>
+                <a href="https://www.zcool.com.cn" target="_blank" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">
+                  <i class="fa fa-external-link w-4 text-center text-gray-400"></i>
+                  <span class="ml-2">站酷</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.pinterest.com" target="_blank" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">
+                  <i class="fa fa-external-link w-4 text-center text-gray-400"></i>
+                  <span class="ml-2">Pinterest</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://remove.bg" target="_blank" class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-50 text-sm">
+                  <i class="fa fa-external-link w-4 text-center text-gray-400"></i>
+                  <span class="ml-2">Removebg</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- 主要内容区域 -->
+      <div class="flex-1 space-y-8">
+        <!-- 欢迎区域 -->
+        <section class="bg-gradient-to-r from-primary/90 to-secondary/90 rounded-2xl p-6 md:p-8 text-white relative overflow-hidden">
+          <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-white/10 rounded-full"></div>
+          <div class="absolute -left-8 top-10 w-32 h-32 bg-white/10 rounded-full"></div>
+          <div class="relative z-10">
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">设计资源，一站聚合</h2>
+            <p class="text-white/80 max-w-md">精选全球优质设计资源与工具，覆盖设计全流程，助力创意高效落地</p>
+            <button class="mt-4 bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-white/90 transition-all flex items-center">
+              <i class="fa fa-star mr-2"></i> 收藏本页
+            </button>
+          </div>
+        </section>
+
+        <!-- 以图搜图 -->
+        <section id="reverse-image" class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-3">
+              <i class="fa fa-search-plus"></i>
+            </div>
+            <h2 class="text-xl font-bold">以图搜图</h2>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <a href="https://cn.bing.com/images" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-bing text-2xl text-blue-600 mb-2"></i>
+              <span class="text-sm font-medium">必应图片</span>
+            </a>
+            <a href="https://image.baidu.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-baidu text-2xl text-blue-500 mb-2"></i>
+              <span class="text-sm font-medium">百度图片</span>
+            </a>
+            <a href="https://tu.360.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-search text-2xl text-green-500 mb-2"></i>
+              <span class="text-sm font-medium">360识图</span>
+            </a>
+            <a href="https://images.google.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-google text-2xl text-red-500 mb-2"></i>
+              <span class="text-sm font-medium">谷歌图片</span>
+            </a>
+            <a href="https://yandex.com/images/" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-yandex text-2xl text-red-600 mb-2"></i>
+              <span class="text-sm font-medium">Yandex识图</span>
+            </a>
+            <a href="https://tineye.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-eye text-2xl text-purple-500 mb-2"></i>
+              <span class="text-sm font-medium">TinEye</span>
+            </a>
+            <a href="https://www.hellorf.com/similar" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-picture-o text-2xl text-primary mb-2"></i>
+              <span class="text-sm font-medium">站酷海洛识图</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 素材图库 -->
+        <section id="material-library" class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mr-3">
+              <i class="fa fa-image"></i>
+            </div>
+            <h2 class="text-xl font-bold">素材图库</h2>
+          </div>
+          
+          <!-- 正版商业图库 -->
+          <div class="mb-6">
+            <h3 class="text-lg font-medium mb-3 text-gray-700">正版商业图库</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="https://www.hellorf.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-paint-brush text-2xl text-primary mb-2"></i>
+                <span class="text-sm font-medium">站酷海洛</span>
+              </a>
+              <a href="https://www.shutterstock.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-shutterstock text-2xl text-blue-700 mb-2"></i>
+                <span class="text-sm font-medium">Shutterstock</span>
+              </a>
+              <a href="https://www.vcg.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-globe text-2xl text-red-600 mb-2"></i>
+                <span class="text-sm font-medium">视觉中国</span>
+              </a>
+              <a href="https://www.huitu.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-picture-o text-2xl text-green-600 mb-2"></i>
+                <span class="text-sm font-medium">汇图网</span>
+              </a>
+              <a href="https://www.veer.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-camera text-2xl text-purple-600 mb-2"></i>
+                <span class="text-sm font-medium">Veer图库</span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- 免费/共享素材库 -->
+          <div class="mb-6">
+            <h3 class="text-lg font-medium mb-3 text-gray-700">免费/共享素材库</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="https://www.nipic.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-share-alt text-2xl text-orange-500 mb-2"></i>
+                <span class="text-sm font-medium">昵图网</span>
+              </a>
+              <a href="https://www.photophoto.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-picture-o text-2xl text-blue-500 mb-2"></i>
+                <span class="text-sm font-medium">图行天下</span>
+              </a>
+              <a href="https://pixabay.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-pixabay text-2xl text-green-500 mb-2"></i>
+                <span class="text-sm font-medium">Pixabay</span>
+              </a>
+              <a href="https://www.100new.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-file-image-o text-2xl text-red-500 mb-2"></i>
+                <span class="text-sm font-medium">新图网</span>
+              </a>
+              <a href="https://www.123rf.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-image text-2xl text-purple-500 mb-2"></i>
+                <span class="text-sm font-medium">123rf</span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- 视频/3D素材 -->
+          <div>
+            <h3 class="text-lg font-medium mb-3 text-gray-700">视频/3D素材</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="https://www.vjshi.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-video-camera text-2xl text-red-600 mb-2"></i>
+                <span class="text-sm font-medium">光厂</span>
+              </a>
+              <a href="https://www.3d66.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-cube text-2xl text-blue-600 mb-2"></i>
+                <span class="text-sm font-medium">3D溜溜网</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 灵感创意 -->
+        <section id="inspiration" class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent mr-3">
+              <i class="fa fa-lightbulb-o"></i>
+            </div>
+            <h2 class="text-xl font-bold">灵感创意</h2>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <a href="https://huaban.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-th text-2xl text-pink-500 mb-2"></i>
+              <span class="text-sm font-medium">花瓣网</span>
+            </a>
+            <a href="https://www.pinterest.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-pinterest-p text-2xl text-red-600 mb-2"></i>
+              <span class="text-sm font-medium">Pinterest</span>
+            </a>
+            <a href="https://www.duitang.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-heart text-2xl text-pink-400 mb-2"></i>
+              <span class="text-sm font-medium">堆糖</span>
+            </a>
+            <a href="https://dribbble.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-dribbble text-2xl text-pink-600 mb-2"></i>
+              <span class="text-sm font-medium">Dribbble</span>
+            </a>
+            <a href="https://www.zcool.com.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-paint-brush text-2xl text-primary mb-2"></i>
+              <span class="text-sm font-medium">站酷</span>
+            </a>
+            <a href="https://www.bigbigwork.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-search text-2xl text-blue-500 mb-2"></i>
+              <span class="text-sm font-medium">大作</span>
+            </a>
+            <a href="https://tuchong.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-camera text-2xl text-green-500 mb-2"></i>
+              <span class="text-sm font-medium">图虫</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 垂直设计领域 -->
+        <section id="vertical-design" class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 mr-3">
+              <i class="fa fa-th-large"></i>
+            </div>
+            <h2 class="text-xl font-bold">垂直设计领域</h2>
+          </div>
+          
+          <!-- 服装印花设计 -->
+          <div class="mb-6">
+            <h3 class="text-lg font-medium mb-3 text-gray-700">服装印花设计</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="https://www.diexun.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-scissors text-2xl text-red-500 mb-2"></i>
+                <span class="text-sm font-medium">蝶讯网</span>
+              </a>
+              <a href="https://www.fuzhuangxingqiu.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-tshirt text-2xl text-blue-500 mb-2"></i>
+                <span class="text-sm font-medium">服装星球</span>
+              </a>
+              <a href="https://www.tanghualib.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-print text-2xl text-green-500 mb-2"></i>
+                <span class="text-sm font-medium">烫画库</span>
+              </a>
+              <a href="https://www.pop-fashion.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-paint-brush text-2xl text-purple-500 mb-2"></i>
+                <span class="text-sm font-medium">POP花型网</span>
+              </a>
+              <a href="https://www.spoonflower.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-flask text-2xl text-yellow-600 mb-2"></i>
+                <span class="text-sm font-medium">Spoonflower</span>
+              </a>
+              <a href="https://www.patternbank.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-th text-2xl text-indigo-500 mb-2"></i>
+                <span class="text-sm font-medium">Patternbank</span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- 电商/广告设计 -->
+          <div>
+            <h3 class="text-lg font-medium mb-3 text-gray-700">电商/广告设计</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="https://www.51miz.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-bullhorn text-2xl text-red-500 mb-2"></i>
+                <span class="text-sm font-medium">觅知网</span>
+              </a>
+              <a href="https://www.tooopen.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-briefcase text-2xl text-blue-500 mb-2"></i>
+                <span class="text-sm font-medium">素材公社</span>
+              </a>
+              <a href="https://www.chaodianwang.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-shopping-cart text-2xl text-green-500 mb-2"></i>
+                <span class="text-sm font-medium">潮点网</span>
+              </a>
+              <a href="https://www.ooopic.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-image text-2xl text-purple-500 mb-2"></i>
+                <span class="text-sm font-medium">我图网</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 设计工具 -->
+        <section id="design-tools" class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500 mr-3">
+              <i class="fa fa-wrench"></i>
+            </div>
+            <h2 class="text-xl font-bold">设计工具</h2>
+          </div>
+          
+          <!-- 图片处理工具 -->
+          <div class="mb-6">
+            <h3 class="text-lg font-medium mb-3 text-gray-700">图片处理工具</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="https://remove.bg" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-scissors text-2xl text-purple-500 mb-2"></i>
+                <span class="text-sm font-medium">Removebg</span>
+              </a>
+              <a href="https://www.motucloud.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-compress text-2xl text-blue-500 mb-2"></i>
+                <span class="text-sm font-medium">Motucloud</span>
+              </a>
+              <a href="https://www.shenqi365.com/tools/addwatermark/" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-stamp text-2xl text-red-500 mb-2"></i>
+                <span class="text-sm font-medium">在线加水印</span>
+              </a>
+              <a href="https://www.17sucai.com/seamless/" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-th text-2xl text-green-500 mb-2"></i>
+                <span class="text-sm font-medium">无缝图检查</span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- 配色工具 -->
+          <div>
+            <h3 class="text-lg font-medium mb-3 text-gray-700">配色工具</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <a href="https://coolors.co" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-paint-brush text-2xl text-pink-500 mb-2"></i>
+                <span class="text-sm font-medium">Coolors</span>
+              </a>
+              <a href="https://zhongguose.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+                <i class="fa fa-palette text-2xl text-red-800 mb-2"></i>
+                <span class="text-sm font-medium">中国色</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 字体工具 -->
+        <section id="font-tools" class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-500 mr-3">
+              <i class="fa fa-font"></i>
+            </div>
+            <h2 class="text-xl font-bold">字体工具</h2>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <a href="https://www.zitiyou.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-font text-2xl text-blue-600 mb-2"></i>
+              <span class="text-sm font-medium">字由</span>
+            </a>
+            <a href="https://www.fonts.net.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-text-height text-2xl text-green-600 mb-2"></i>
+              <span class="text-sm font-medium">字体天下</span>
+            </a>
+            <a href="https://www.qiuziti.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-search text-2xl text-purple-600 mb-2"></i>
+              <span class="text-sm font-medium">求字体网</span>
+            </a>
+            <a href="https://fonts.google.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-google text-2xl text-red-500 mb-2"></i>
+              <span class="text-sm font-medium">Google字体</span>
+            </a>
+            <a href="https://www.100font.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-free-code-camp text-2xl text-green-500 mb-2"></i>
+              <span class="text-sm font-medium">100font</span>
+            </a>
+            <a href="https://www.zimijia.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-file-text-o text-2xl text-blue-500 mb-2"></i>
+              <span class="text-sm font-medium">字觅网</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- AI设计工具 -->
+        <section id="ai-tools" class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-lg bg-blue-700/10 flex items-center justify-center text-blue-700 mr-3">
+              <i class="fa fa-robot"></i>
+            </div>
+            <h2 class="text-xl font-bold">AI设计工具</h2>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <a href="https://www.deepseek.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-brain text-2xl text-blue-600 mb-2"></i>
+              <span class="text-sm font-medium">Deepseek</span>
+            </a>
+            <a href="https://kimi.moonshot.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-comment-o text-2xl text-purple-600 mb-2"></i>
+              <span class="text-sm font-medium">Kimi</span>
+            </a>
+            <a href="https://www.tiangongai.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-rocket text-2xl text-red-600 mb-2"></i>
+              <span class="text-sm font-medium">天工AI</span>
+            </a>
+            <a href="https://chat.openai.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-comments text-2xl text-green-600 mb-2"></i>
+              <span class="text-sm font-medium">ChatGPT</span>
+            </a>
+            <a href="https://claude.ai" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-cloud text-2xl text-blue-500 mb-2"></i>
+              <span class="text-sm font-medium">Claude</span>
+            </a>
+            <a href="https://yiyan.baidu.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-baidu text-2xl text-blue-400 mb-2"></i>
+              <span class="text-sm font-medium">文心一言</span>
+            </a>
+            <a href="https://xinghuo.xfyun.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
+              <i class="fa fa-fire text-2xl text-orange-500 mb-2"></i>
+              <span class="text-sm font-medium">讯飞星火</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-white border-t border-gray-200 py-6 mt-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="flex items-center mb-4 md:mb-0">
+          <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white mr-2">
+            <i class="fa fa-paint-brush"></i>
+          </div>
+          <span class="font-bold text-primary">N创设计导航网</span>
+        </div>
+        <div class="text-sm text-gray-500 text-center md:text-right">
+          <p>© 2025 N创设计导航网 - 设计资源聚合平台</p>
+          <p class="mt-1">本站仅提供导航服务，所有链接均指向第三方网站</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 回到顶部按钮 -->
+  <button id="backToTop" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-40">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+      sidebar.classList.toggle('md:block');
+    });
+
+    // 回到顶部按钮
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.remove('opacity-0', 'invisible');
+        backToTop.classList.add('opacity-100', 'visible');
+      } else {
+        backToTop.classList.remove('opacity-100', 'visible');
+        backToTop.classList.add('opacity-0', 'invisible');
+      }
+    });
+    
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 移动端点击后关闭菜单
+          if (window.innerWidth < 768) {
+            sidebar.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // 导航项激活状态
+    const sections = document.querySelectorAll('section[id]');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (window.scrollY >= (sectionTop - 100)) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('nav-active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('nav-active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
