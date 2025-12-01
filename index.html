@@ -38,84 +38,19 @@
       .nav-active {
         @apply bg-primary/10 text-primary border-l-4 border-primary;
       }
-      /* 网站专属图标样式 - 统一尺寸和圆角 */
-      .site-icon {
-        @apply w-10 h-10 rounded-lg flex items-center justify-center bg-white shadow-sm;
-        background-size: 60% !important;
-        background-repeat: no-repeat !important;
-        background-position: center !important;
+      /* 网站名称容器样式 - 替代原图标位置 */
+      .site-name-container {
+        @apply w-10 h-10 rounded-lg flex items-center justify-center shadow-sm text-xs font-bold;
       }
+      /* 背景色优化（按网站类型区分） */
+      .icon-bg-commercial { background-color: #EBF5FF; color: #0078D4; } /* 商业图库 - 浅蓝色 */
+      .icon-bg-free { background-color: #E8FFF3; color: #27AE60; } /* 免费素材 - 浅绿色 */
+      .icon-bg-inspire { background-color: #FFF0E8; color: #E60023; } /* 灵感创意 - 浅橙色 */
+      .icon-bg-vertical { background-color: #F9E8FF; color: #9B59B6; } /* 垂直设计 - 浅紫色 */
+      .icon-bg-tool { background-color: #E8F4FF; color: #3498DB; } /* 设计工具 - 浅蓝色 */
+      .icon-bg-font { background-color: #FFE8E8; color: #E74C3C; } /* 字体工具 - 浅红色 */
+      .icon-bg-ai { background-color: #E8F0FF; color: #4285F4; } /* AI工具 - 浅蓝紫色 */
     }
-  </style>
-  <!-- 自定义网站图标背景图（使用官方图标CDN或高清图标） -->
-  <style>
-    /* 以图搜图类 */
-    .icon-bing { background: url('https://img.icons8.com/fluency/96/0078D4/bing.png'); }
-    .icon-baidu { background: url('https://img.icons8.com/fluency/96/0084FF/baidu.png'); }
-    .icon-360 { background: url('https://img.icons8.com/fluency/96/27AE60/360.png'); }
-    .icon-google { background: url('https://img.icons8.com/fluency/96/4285F4/google.png'); }
-    .icon-yandex { background: url('https://img.icons8.com/fluency/96/FF0000/yandex.png'); }
-    .icon-tineye { background: url('https://img.icons8.com/fluency/96/9B59B6/tineye.png'); }
-    .icon-hellorf { background: url('https://img.icons8.com/fluency/96/165DFF/zhihu.png'); } /* 站酷海洛近似图标 */
-
-    /* 素材图库类 */
-    .icon-shutterstock { background: url('https://img.icons8.com/fluency/96/00A3FF/shutterstock.png'); }
-    .icon-vcg { background: url('https://img.icons8.com/fluency/96/E74C3C/visual-china-group.png'); } /* 视觉中国专属色图标 */
-    .icon-huitu { background: url('https://img.icons8.com/fluency/96/2ECC71/photograph.png'); } /* 汇图网近似图标 */
-    .icon-veer { background: url('https://img.icons8.com/fluency/96/8E44AD/veer.png'); }
-    .icon-nipic { background: url('https://img.icons8.com/fluency/96/F39C12/nipic.png'); } /* 昵图网专属色图标 */
-    .icon-photophoto { background: url('https://img.icons8.com/fluency/96/3498DB/picture.png'); } /* 图行天下近似图标 */
-    .icon-pixabay { background: url('https://img.icons8.com/fluency/96/27AE60/pixabay.png'); }
-    .icon-100new { background: url('https://img.icons8.com/fluency/96/E67E22/new.png'); } /* 新图网近似图标 */
-    .icon-123rf { background: url('https://img.icons8.com/fluency/96/1ABC9C/123rf.png'); }
-    .icon-vjshi { background: url('https://img.icons8.com/fluency/96/E74C3C/video.png'); } /* 光厂近似图标 */
-    .icon-3d66 { background: url('https://img.icons8.com/fluency/96/34495E/3d-cube.png'); } /* 3D溜溜网近似图标 */
-
-    /* 灵感创意类 */
-    .icon-huaban { background: url('https://img.icons8.com/fluency/96/EC407A/huaban.png'); } /* 花瓣网专属色图标 */
-    .icon-pinterest { background: url('https://img.icons8.com/fluency/96/E60023/pinterest.png'); }
-    .icon-duitang { background: url('https://img.icons8.com/fluency/96/FF69B4/duitang.png'); } /* 堆糖专属色图标 */
-    .icon-dribbble { background: url('https://img.icons8.com/fluency/96/EA4C89/dribbble.png'); }
-    .icon-zcool { background: url('https://img.icons8.com/fluency/96/165DFF/zcool.png'); } /* 站酷专属色图标 */
-    .icon-bigbigwork { background: url('https://img.icons8.com/fluency/96/2980B9/search.png'); } /* 大作近似图标 */
-    .icon-tuchong { background: url('https://img.icons8.com/fluency/96/27AE60/camera.png'); } /* 图虫近似图标 */
-
-    /* 垂直设计类 */
-    .icon-diexun { background: url('https://img.icons8.com/fluency/96/E74C3C/scissors.png'); } /* 蝶讯网近似图标 */
-    .icon-fuzhuangxingqiu { background: url('https://img.icons8.com/fluency/96/3498DB/t-shirt.png'); } /* 服装星球近似图标 */
-    .icon-tanghualib { background: url('https://img.icons8.com/fluency/96/F1C40F/print.png'); } /* 烫画库近似图标 */
-    .icon-pop { background: url('https://img.icons8.com/fluency/96/9B59B6/paint-brush.png'); } /* POP花型网近似图标 */
-    .icon-spoonflower { background: url('https://img.icons8.com/fluency/96/E67E22/flask.png'); } /* Spoonflower近似图标 */
-    .icon-patternbank { background: url('https://img.icons8.com/fluency/96/8E44AD/pattern.png'); } /* Patternbank近似图标 */
-    .icon-51miz { background: url('https://img.icons8.com/fluency/96/E74C3C/bullhorn.png'); } /* 觅知网近似图标 */
-    .icon-tooopen { background: url('https://img.icons8.com/fluency/96/3498DB/briefcase.png'); } /* 素材公社近似图标 */
-    .icon-chaodianwang { background: url('https://img.icons8.com/fluency/96/27AE60/shopping-cart.png'); } /* 潮点网近似图标 */
-    .icon-ooopic { background: url('https://img.icons8.com/fluency/96/9B59B6/image.png'); } /* 我图网近似图标 */
-
-    /* 设计工具类 */
-    .icon-removebg { background: url('https://img.icons8.com/fluency/96/9B59B6/cut.png'); } /* Removebg专属图标 */
-    .icon-motucloud { background: url('https://img.icons8.com/fluency/96/3498DB/compress.png'); } /* Motucloud近似图标 */
-    .icon-watermark { background: url('https://img.icons8.com/fluency/96/E74C3C/stamp.png'); } /* 加水印工具近似图标 */
-    .icon-seamless { background: url('https://img.icons8.com/fluency/96/27AE60/tiles.png'); } /* 无缝图检查近似图标 */
-    .icon-coolors { background: url('https://img.icons8.com/fluency/96/EC407A/paint-palette.png'); } /* Coolors近似图标 */
-    .icon-zhongguose { background: url('https://img.icons8.com/fluency/96/9C27B0/chinese.png'); } /* 中国色近似图标 */
-
-    /* 字体工具类 */
-    .icon-zitiyou { background: url('https://img.icons8.com/fluency/96/3498DB/font.png'); } /* 字由近似图标 */
-    .icon-fontsnet { background: url('https://img.icons8.com/fluency/96/27AE60/text-height.png'); } /* 字体天下近似图标 */
-    .icon-qiuziti { background: url('https://img.icons8.com/fluency/96/9B59B6/font-search.png'); } /* 求字体网近似图标 */
-    .icon-googlefonts { background: url('https://img.icons8.com/fluency/96/4285F4/google-fonts.png'); } /* Google字体专属图标 */
-    .icon-100font { background: url('https://img.icons8.com/fluency/96/27AE60/free-font.png'); } /* 100font近似图标 */
-    .icon-zimijia { background: url('https://img.icons8.com/fluency/96/3498DB/file-text.png'); } /* 字觅网近似图标 */
-
-    /* AI工具类 */
-    .icon-deepseek { background: url('https://img.icons8.com/fluency/96/3498DB/brain.png'); } /* Deepseek近似图标 */
-    .icon-kimi { background: url('https://img.icons8.com/fluency/96/9B59B6/chat.png'); } /* Kimi近似图标 */
-    .icon-tiangong { background: url('https://img.icons8.com/fluency/96/E74C3C/rocket.png'); } /* 天工AI近似图标 */
-    .icon-chatgpt { background: url('https://img.icons8.com/fluency/96/27AE60/openai.png'); } /* ChatGPT专属图标 */
-    .icon-claude { background: url('https://img.icons8.com/fluency/96/3498DB/cloud.png'); } /* Claude近似图标 */
-    .icon-wenxin { background: url('https://img.icons8.com/fluency/96/4285F4/baidu.png'); } /* 文心一言（百度）图标 */
-    .icon-xinghuo { background: url('https://img.icons8.com/fluency/96/F39C12/fire.png'); } /* 讯飞星火近似图标 */
   </style>
 </head>
 <body class="font-inter bg-light text-dark min-h-screen flex flex-col">
@@ -261,7 +196,7 @@
           </div>
         </section>
 
-        <!-- 以图搜图 - 全部替换为网站专属图标 -->
+        <!-- 以图搜图 - 替换图标为网站名 -->
         <section id="reverse-image" class="bg-white rounded-xl shadow-sm p-6">
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mr-3">
@@ -271,37 +206,37 @@
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             <a href="https://cn.bing.com/images" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-bing mb-2"></div>
+              <div class="site-name-container icon-bg-commercial mb-2">必应</div>
               <span class="text-sm font-medium">必应图片</span>
             </a>
             <a href="https://image.baidu.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-baidu mb-2"></div>
+              <div class="site-name-container icon-bg-commercial mb-2">百度</div>
               <span class="text-sm font-medium">百度图片</span>
             </a>
             <a href="https://tu.360.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-360 mb-2"></div>
+              <div class="site-name-container icon-bg-commercial mb-2">360</div>
               <span class="text-sm font-medium">360识图</span>
             </a>
             <a href="https://images.google.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-google mb-2"></div>
+              <div class="site-name-container icon-bg-commercial mb-2">谷歌</div>
               <span class="text-sm font-medium">谷歌图片</span>
             </a>
             <a href="https://yandex.com/images/" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-yandex mb-2"></div>
+              <div class="site-name-container icon-bg-commercial mb-2">Yandex</div>
               <span class="text-sm font-medium">Yandex识图</span>
             </a>
             <a href="https://tineye.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-tineye mb-2"></div>
+              <div class="site-name-container icon-bg-commercial mb-2">TinEye</div>
               <span class="text-sm font-medium">TinEye</span>
             </a>
             <a href="https://www.hellorf.com/similar" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-hellorf mb-2"></div>
+              <div class="site-name-container icon-bg-commercial mb-2">海洛</div>
               <span class="text-sm font-medium">站酷海洛识图</span>
             </a>
           </div>
         </section>
 
-        <!-- 素材图库 - 全部替换为网站专属图标 -->
+        <!-- 素材图库 - 替换图标为网站名 -->
         <section id="material-library" class="bg-white rounded-xl shadow-sm p-6">
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary mr-3">
@@ -315,23 +250,23 @@
             <h3 class="text-lg font-medium mb-3 text-gray-700">正版商业图库</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               <a href="https://www.hellorf.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-hellorf mb-2"></div>
+                <div class="site-name-container icon-bg-commercial mb-2">海洛</div>
                 <span class="text-sm font-medium">站酷海洛</span>
               </a>
               <a href="https://www.shutterstock.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-shutterstock mb-2"></div>
+                <div class="site-name-container icon-bg-commercial mb-2">Shutter</div>
                 <span class="text-sm font-medium">Shutterstock</span>
               </a>
               <a href="https://www.vcg.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-vcg mb-2"></div>
+                <div class="site-name-container icon-bg-commercial mb-2">视觉</div>
                 <span class="text-sm font-medium">视觉中国</span>
               </a>
               <a href="https://www.huitu.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-huitu mb-2"></div>
+                <div class="site-name-container icon-bg-commercial mb-2">汇图</div>
                 <span class="text-sm font-medium">汇图网</span>
               </a>
               <a href="https://www.veer.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-veer mb-2"></div>
+                <div class="site-name-container icon-bg-commercial mb-2">Veer</div>
                 <span class="text-sm font-medium">Veer图库</span>
               </a>
             </div>
@@ -342,23 +277,23 @@
             <h3 class="text-lg font-medium mb-3 text-gray-700">免费/共享素材库</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               <a href="https://www.nipic.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-nipic mb-2"></div>
+                <div class="site-name-container icon-bg-free mb-2">昵图</div>
                 <span class="text-sm font-medium">昵图网</span>
               </a>
               <a href="https://www.photophoto.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-photophoto mb-2"></div>
+                <div class="site-name-container icon-bg-free mb-2">图行</div>
                 <span class="text-sm font-medium">图行天下</span>
               </a>
               <a href="https://pixabay.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-pixabay mb-2"></div>
+                <div class="site-name-container icon-bg-free mb-2">Pixabay</div>
                 <span class="text-sm font-medium">Pixabay</span>
               </a>
               <a href="https://www.100new.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-100new mb-2"></div>
+                <div class="site-name-container icon-bg-free mb-2">新图</div>
                 <span class="text-sm font-medium">新图网</span>
               </a>
               <a href="https://www.123rf.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-123rf mb-2"></div>
+                <div class="site-name-container icon-bg-free mb-2">123rf</div>
                 <span class="text-sm font-medium">123rf</span>
               </a>
             </div>
@@ -369,18 +304,18 @@
             <h3 class="text-lg font-medium mb-3 text-gray-700">视频/3D素材</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               <a href="https://www.vjshi.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-vjshi mb-2"></div>
+                <div class="site-name-container icon-bg-commercial mb-2">光厂</div>
                 <span class="text-sm font-medium">光厂</span>
               </a>
               <a href="https://www.3d66.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-3d66 mb-2"></div>
+                <div class="site-name-container icon-bg-commercial mb-2">3D66</div>
                 <span class="text-sm font-medium">3D溜溜网</span>
               </a>
             </div>
           </div>
         </section>
 
-        <!-- 灵感创意 - 全部替换为网站专属图标 -->
+        <!-- 灵感创意 - 替换图标为网站名 -->
         <section id="inspiration" class="bg-white rounded-xl shadow-sm p-6">
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent mr-3">
@@ -390,37 +325,37 @@
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             <a href="https://huaban.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-huaban mb-2"></div>
+              <div class="site-name-container icon-bg-inspire mb-2">花瓣</div>
               <span class="text-sm font-medium">花瓣网</span>
             </a>
             <a href="https://www.pinterest.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-pinterest mb-2"></div>
+              <div class="site-name-container icon-bg-inspire mb-2">Pinterest</div>
               <span class="text-sm font-medium">Pinterest</span>
             </a>
             <a href="https://www.duitang.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-duitang mb-2"></div>
+              <div class="site-name-container icon-bg-inspire mb-2">堆糖</div>
               <span class="text-sm font-medium">堆糖</span>
             </a>
             <a href="https://dribbble.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-dribbble mb-2"></div>
+              <div class="site-name-container icon-bg-inspire mb-2">Dribbble</div>
               <span class="text-sm font-medium">Dribbble</span>
             </a>
             <a href="https://www.zcool.com.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-zcool mb-2"></div>
+              <div class="site-name-container icon-bg-inspire mb-2">站酷</div>
               <span class="text-sm font-medium">站酷</span>
             </a>
             <a href="https://www.bigbigwork.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-bigbigwork mb-2"></div>
+              <div class="site-name-container icon-bg-inspire mb-2">大作</div>
               <span class="text-sm font-medium">大作</span>
             </a>
             <a href="https://tuchong.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-tuchong mb-2"></div>
+              <div class="site-name-container icon-bg-inspire mb-2">图虫</div>
               <span class="text-sm font-medium">图虫</span>
             </a>
           </div>
         </section>
 
-        <!-- 垂直设计领域 - 全部替换为网站专属图标 -->
+        <!-- 垂直设计领域 - 替换图标为网站名 -->
         <section id="vertical-design" class="bg-white rounded-xl shadow-sm p-6">
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 mr-3">
@@ -434,27 +369,27 @@
             <h3 class="text-lg font-medium mb-3 text-gray-700">服装印花设计</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               <a href="https://www.diexun.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-diexun mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">蝶讯</div>
                 <span class="text-sm font-medium">蝶讯网</span>
               </a>
               <a href="https://www.fuzhuangxingqiu.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-fuzhuangxingqiu mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">服装星球</div>
                 <span class="text-sm font-medium">服装星球</span>
               </a>
               <a href="https://www.tanghualib.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-tanghualib mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">烫画库</div>
                 <span class="text-sm font-medium">烫画库</span>
               </a>
               <a href="https://www.pop-fashion.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-pop mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">POP</div>
                 <span class="text-sm font-medium">POP花型网</span>
               </a>
               <a href="https://www.spoonflower.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-spoonflower mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">Spoonflower</div>
                 <span class="text-sm font-medium">Spoonflower</span>
               </a>
               <a href="https://www.patternbank.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-patternbank mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">Patternbank</div>
                 <span class="text-sm font-medium">Patternbank</span>
               </a>
             </div>
@@ -465,26 +400,26 @@
             <h3 class="text-lg font-medium mb-3 text-gray-700">电商/广告设计</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               <a href="https://www.51miz.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-51miz mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">觅知</div>
                 <span class="text-sm font-medium">觅知网</span>
               </a>
               <a href="https://www.tooopen.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-tooopen mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">素材公社</div>
                 <span class="text-sm font-medium">素材公社</span>
               </a>
               <a href="https://www.chaodianwang.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-chaodianwang mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">潮点</div>
                 <span class="text-sm font-medium">潮点网</span>
               </a>
               <a href="https://www.ooopic.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-ooopic mb-2"></div>
+                <div class="site-name-container icon-bg-vertical mb-2">我图</div>
                 <span class="text-sm font-medium">我图网</span>
               </a>
             </div>
           </div>
         </section>
 
-        <!-- 设计工具 - 全部替换为网站专属图标 -->
+        <!-- 设计工具 - 替换图标为网站名 -->
         <section id="design-tools" class="bg-white rounded-xl shadow-sm p-6">
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-500 mr-3">
@@ -498,19 +433,19 @@
             <h3 class="text-lg font-medium mb-3 text-gray-700">图片处理工具</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               <a href="https://remove.bg" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-removebg mb-2"></div>
+                <div class="site-name-container icon-bg-tool mb-2">Removebg</div>
                 <span class="text-sm font-medium">Removebg</span>
               </a>
               <a href="https://www.motucloud.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-motucloud mb-2"></div>
+                <div class="site-name-container icon-bg-tool mb-2">Motu</div>
                 <span class="text-sm font-medium">Motucloud</span>
               </a>
               <a href="https://www.shenqi365.com/tools/addwatermark/" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-watermark mb-2"></div>
+                <div class="site-name-container icon-bg-tool mb-2">水印</div>
                 <span class="text-sm font-medium">在线加水印</span>
               </a>
               <a href="https://www.17sucai.com/seamless/" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-seamless mb-2"></div>
+                <div class="site-name-container icon-bg-tool mb-2">无缝</div>
                 <span class="text-sm font-medium">无缝图检查</span>
               </a>
             </div>
@@ -521,18 +456,18 @@
             <h3 class="text-lg font-medium mb-3 text-gray-700">配色工具</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
               <a href="https://coolors.co" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-coolors mb-2"></div>
+                <div class="site-name-container icon-bg-tool mb-2">Coolors</div>
                 <span class="text-sm font-medium">Coolors</span>
               </a>
               <a href="https://zhongguose.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div class="site-icon icon-zhongguose mb-2"></div>
+                <div class="site-name-container icon-bg-tool mb-2">中国色</div>
                 <span class="text-sm font-medium">中国色</span>
               </a>
             </div>
           </div>
         </section>
 
-        <!-- 字体工具 - 全部替换为网站专属图标 -->
+        <!-- 字体工具 - 替换图标为网站名 -->
         <section id="font-tools" class="bg-white rounded-xl shadow-sm p-6">
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-500 mr-3">
@@ -542,33 +477,33 @@
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             <a href="https://www.zitiyou.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-zitiyou mb-2"></div>
+              <div class="site-name-container icon-bg-font mb-2">字由</div>
               <span class="text-sm font-medium">字由</span>
             </a>
             <a href="https://www.fonts.net.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-fontsnet mb-2"></div>
+              <div class="site-name-container icon-bg-font mb-2">字体天下</div>
               <span class="text-sm font-medium">字体天下</span>
             </a>
             <a href="https://www.qiuziti.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-qiuziti mb-2"></div>
+              <div class="site-name-container icon-bg-font mb-2">求字体</div>
               <span class="text-sm font-medium">求字体网</span>
             </a>
             <a href="https://fonts.google.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-googlefonts mb-2"></div>
+              <div class="site-name-container icon-bg-font mb-2">Google</div>
               <span class="text-sm font-medium">Google字体</span>
             </a>
             <a href="https://www.100font.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-100font mb-2"></div>
+              <div class="site-name-container icon-bg-font mb-2">100font</div>
               <span class="text-sm font-medium">100font</span>
             </a>
             <a href="https://www.zimijia.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-zimijia mb-2"></div>
+              <div class="site-name-container icon-bg-font mb-2">字觅</div>
               <span class="text-sm font-medium">字觅网</span>
             </a>
           </div>
         </section>
 
-        <!-- AI设计工具 - 全部替换为网站专属图标 -->
+        <!-- AI设计工具 - 替换图标为网站名 -->
         <section id="ai-tools" class="bg-white rounded-xl shadow-sm p-6">
           <div class="flex items-center mb-4">
             <div class="w-10 h-10 rounded-lg bg-blue-700/10 flex items-center justify-center text-blue-700 mr-3">
@@ -578,31 +513,31 @@
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             <a href="https://www.deepseek.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-deepseek mb-2"></div>
+              <div class="site-name-container icon-bg-ai mb-2">Deepseek</div>
               <span class="text-sm font-medium">Deepseek</span>
             </a>
             <a href="https://kimi.moonshot.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-kimi mb-2"></div>
+              <div class="site-name-container icon-bg-ai mb-2">Kimi</div>
               <span class="text-sm font-medium">Kimi</span>
             </a>
             <a href="https://www.tiangongai.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-tiangong mb-2"></div>
+              <div class="site-name-container icon-bg-ai mb-2">天工</div>
               <span class="text-sm font-medium">天工AI</span>
             </a>
             <a href="https://chat.openai.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-chatgpt mb-2"></div>
+              <div class="site-name-container icon-bg-ai mb-2">ChatGPT</div>
               <span class="text-sm font-medium">ChatGPT</span>
             </a>
             <a href="https://claude.ai" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-claude mb-2"></div>
+              <div class="site-name-container icon-bg-ai mb-2">Claude</div>
               <span class="text-sm font-medium">Claude</span>
             </a>
             <a href="https://yiyan.baidu.com" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-wenxin mb-2"></div>
+              <div class="site-name-container icon-bg-ai mb-2">文心</div>
               <span class="text-sm font-medium">文心一言</span>
             </a>
             <a href="https://xinghuo.xfyun.cn" target="_blank" class="card-hover bg-gray-50 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-              <div class="site-icon icon-xinghuo mb-2"></div>
+              <div class="site-name-container icon-bg-ai mb-2">星火</div>
               <span class="text-sm font-medium">讯飞星火</span>
             </a>
           </div>
@@ -712,3 +647,4 @@
   </script>
 </body>
 </html>
+
